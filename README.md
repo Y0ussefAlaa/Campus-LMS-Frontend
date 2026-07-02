@@ -1,75 +1,97 @@
-# React + TypeScript + Vite
+# New Campus AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A role-based educational dashboard for administrators, teachers, and students built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+New Campus AI is designed to support a modern campus workflow with role-specific functionality:
 
-## React Compiler
+- Admins manage users, departments, courses, and overall system access
+- Teachers create courses, add materials, build quizzes, and assign tasks
+- Students enroll in courses, review content, take quizzes, and submit assignments
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Features
 
-Note: This will impact Vite dev & build performances.
+- Role-based authentication and protected routes
+- Admin dashboard with user and department management
+- Teacher dashboard with course creation, materials, quizzes, and task management
+- Student dashboard with enrollment, course content, quiz-taking, and submission tracking
+- Responsive UI using reusable components and loading skeletons
+- API integration with Axios and shared state via React context
 
-## Expanding the ESLint configuration
+## Technology Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19
+- TypeScript 6
+- Vite
+- Tailwind CSS 4
+- Material UI
+- React Router Dom 7
+- React Query
+- Axios
+- React Hook Form + Yup
+- ESLint
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Repo Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- `src/Components` — reusable components, UI widgets, and skeleton loaders
+- `src/Layouts` — layout wrappers for admin, teacher, and student pages
+- `src/Pages` — feature pages and views for each role
+- `src/routes` — route definitions for admin, teacher, and student sections
+- `src/context` — auth and application state providers
+- `src/lib` — API client modules
+- `src/schema` — validation schemas and shared data definitions
+- `src/Services` — utilities for cookies and profile handling
+- `src/utils` — helper utilities
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+
+### Prerequisites
+
+- Node.js v20 or later
+- npm v10 or later
+
+### Install dependencies
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Start development server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+## Scripts
+
+- `npm run dev` — start application in development mode
+- `npm run build` — compile and bundle application
+- `npm run preview` — preview the production build locally
+- `npm run lint` — run ESLint checks
+
+## Notes
+
+- Public landing page is shown when users are not authenticated.
+- Authenticated users are redirected to the correct dashboard by role.
+- Admin routes live under `/admin/*`, teacher routes under `/teacher/*`, and student routes under `/student/*`.
+
+## Contributing
+
+Contributions are welcome. Please open issues or pull requests for bug fixes, improvements, or documentation updates.
+
+## License
+
+This repository does not include a license file. Add one if you intend to publish or distribute it publicly.
