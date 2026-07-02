@@ -1,97 +1,145 @@
-# New Campus AI
+<div align="center">
 
-A role-based educational dashboard for administrators, teachers, and students built with React, TypeScript, and Vite.
+## 🎓 Campus AI
 
-## Overview
+**A role-based educational dashboard for administrators, teachers, and students**
+---
 
-New Campus AI is designed to support a modern campus workflow with role-specific functionality:
+## 📌 Overview
 
-- Admins manage users, departments, courses, and overall system access
-- Teachers create courses, add materials, build quizzes, and assign tasks
-- Students enroll in courses, review content, take quizzes, and submit assignments
+**New Campus AI** is a modern, role-based campus management platform built to streamline the workflow between administrators, teachers, and students. Each role gets a dedicated dashboard with tailored permissions, views, and tools — powered by a clean, type-safe React + TypeScript architecture.
 
-## Features
+| Role | Capabilities |
+|------|-------------|
+| 🛡️ **Admin** | Manage users, departments, courses, and overall system access |
+| 👩‍🏫 **Teacher** | Create courses, upload materials, build quizzes, assign tasks |
+| 🎓 **Student** | Enroll in courses, review content, take quizzes, submit assignments |
 
-- Role-based authentication and protected routes
-- Admin dashboard with user and department management
-- Teacher dashboard with course creation, materials, quizzes, and task management
-- Student dashboard with enrollment, course content, quiz-taking, and submission tracking
-- Responsive UI using reusable components and loading skeletons
-- API integration with Axios and shared state via React context
+---
 
-## Technology Stack
+## 🏗️ System Architecture
 
-- React 19
-- TypeScript 6
-- Vite
-- Tailwind CSS 4
-- Material UI
-- React Router Dom 7
-- React Query
-- Axios
-- React Hook Form + Yup
-- ESLint
+```mermaid
+flowchart TD
+    U[User visits app] --> Auth{Authenticated?}
+    Auth -- No --> Landing[Public Landing Page]
+    Auth -- Yes --> Role{Role Check}
 
-## Repo Structure
+    Role -- Admin --> AdminDash[Admin Dashboard\n/admin/*]
+    Role -- Teacher --> TeacherDash[Teacher Dashboard\n/teacher/*]
+    Role -- Student --> StudentDash[Student Dashboard\n/student/*]
 
-- `src/Components` — reusable components, UI widgets, and skeleton loaders
-- `src/Layouts` — layout wrappers for admin, teacher, and student pages
-- `src/Pages` — feature pages and views for each role
-- `src/routes` — route definitions for admin, teacher, and student sections
-- `src/context` — auth and application state providers
-- `src/lib` — API client modules
-- `src/schema` — validation schemas and shared data definitions
-- `src/Services` — utilities for cookies and profile handling
-- `src/utils` — helper utilities
+    AdminDash --> Users[User Management]
+    AdminDash --> Depts[Department Management]
+    AdminDash --> CourseMgmt[Course Oversight]
 
-## Getting Started
+    TeacherDash --> CreateCourse[Course Creation]
+    TeacherDash --> Materials[Materials Upload]
+    TeacherDash --> Quizzes[Quiz Builder]
+    TeacherDash --> Tasks[Task Assignment]
+
+    StudentDash --> Enroll[Course Enrollment]
+    StudentDash --> Content[Content Review]
+    StudentDash --> TakeQuiz[Quiz Taking]
+    StudentDash --> Submit[Assignment Submission]
+```
+
+## 🔄 Request & State Flow
+
+```mermaid
+flowchart LR
+    Comp[React Components] -->|calls| Ctx[React Context\nauth & app state]
+    Comp -->|data fetching| RQ[React Query]
+    RQ -->|HTTP requests| Axios[Axios Client]
+    Axios -->|REST API| Backend[(Backend API)]
+    Comp -->|form input| RHF[React Hook Form]
+    RHF -->|validation| Yup[Yup Schemas]
+```
+
+---
+
+## ✨ Features
+
+- 🔐 Role-based authentication with protected routes
+- 🛡️ Admin dashboard — user & department management
+- 👩‍🏫 Teacher dashboard — courses, materials, quizzes, tasks
+- 🎓 Student dashboard — enrollment, content, quizzes, submissions
+- 📱 Fully responsive UI with reusable components & skeleton loaders
+- 🔗 Centralized API integration via Axios + React Query
+- 🌍 Shared state management via React Context
+
+---
+
+## 🛠️ Technology Stack
+
+| Category | Tools |
+|----------|-------|
+| **Core** | React 19, TypeScript 6, Vite |
+| **Styling** | Tailwind CSS 4, Material UI |
+| **Routing** | React Router DOM 7 |
+| **Data Fetching** | React Query, Axios |
+| **Forms & Validation** | React Hook Form, Yup |
+| **Code Quality** | ESLint |
+
+---
+
+## 📂 Repo Structure
+
+```
+src/
+├── Components/   # Reusable components, UI widgets, skeleton loaders
+├── Layouts/      # Layout wrappers for admin, teacher, and student pages
+├── Pages/        # Feature pages and views for each role
+├── routes/       # Route definitions for admin, teacher, and student sections
+├── context/      # Auth and application state providers
+├── lib/          # API client modules
+├── schema/       # Validation schemas and shared data definitions
+├── Services/     # Utilities for cookies and profile handling
+└── utils/        # Helper utilities
+```
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-
 - Node.js v20 or later
 - npm v10 or later
 
-### Install dependencies
+### Installation
 
 ```bash
+# Install dependencies
 npm install
-```
 
-### Start development server
-
-```bash
+# Start development server
 npm run dev
-```
 
-### Build for production
-
-```bash
+# Build for production
 npm run build
-```
 
-### Preview production build
-
-```bash
+# Preview production build
 npm run preview
 ```
 
-## Scripts
+### Available Scripts
 
-- `npm run dev` — start application in development mode
-- `npm run build` — compile and bundle application
-- `npm run preview` — preview the production build locally
-- `npm run lint` — run ESLint checks
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start application in development mode |
+| `npm run build` | Compile and bundle application |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint checks |
 
-## Notes
+---
+
+## 📝 Notes
 
 - Public landing page is shown when users are not authenticated.
-- Authenticated users are redirected to the correct dashboard by role.
-- Admin routes live under `/admin/*`, teacher routes under `/teacher/*`, and student routes under `/student/*`.
+- Authenticated users are redirected to the correct dashboard based on role.
+- Route structure:
+  - Admin → `/admin/*`
+  - Teacher → `/teacher/*`
+  - Student → `/student/*`
 
-## Contributing
-
-Contributions are welcome. Please open issues or pull requests for bug fixes, improvements, or documentation updates.
-
-## License
-
-This repository does not include a license file. Add one if you intend to publish or distribute it publicly.
+---
