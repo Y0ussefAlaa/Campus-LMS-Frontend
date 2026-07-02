@@ -1,8 +1,7 @@
-<div align="center">
-
-## 🎓 Campus AI
+# 🎓 Campus AI
 
 **A role-based educational dashboard for administrators, teachers, and students**
+
 ---
 
 ## 📌 Overview
@@ -141,5 +140,3 @@ npm run preview
   - Admin → `/admin/*`
   - Teacher → `/teacher/*`
   - Student → `/student/*`
-
----
