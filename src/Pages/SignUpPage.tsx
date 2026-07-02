@@ -56,9 +56,9 @@ const SignUpPage = () => {
           <input
             id="username"
             className="w-full h-9 p-2 bg-gray-300 rounded-md"
-            {...register("name")}
+            {...register("username")}
           />
-          <p className="text-red-600">{errors.name?.message}</p>
+          <p className="text-red-600">{errors.username?.message}</p>
         </div>
         <div className="flex flex-col w-full">
           <label
@@ -95,12 +95,7 @@ const SignUpPage = () => {
           >
             Confirm Password
           </label>
-          <input
-            id="confirmpassword"
-            className="w-full h-9 p-2 bg-gray-300 rounded-md"
-            {...register("confirmpassword")}
-          />
-          <p className="text-red-600">{errors.confirmpassword?.message}</p>
+          
         </div>
 
         <button

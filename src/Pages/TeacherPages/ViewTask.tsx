@@ -16,7 +16,7 @@ const ViewTask = () => {
   const { handleLogout } = useAuth();
   const { id } = useParams();
   const { isCustomModalOpen, setIsCustomModalOpen } = useCustomModal();
-  const { mutate, isPending, data: response } = useTeacherApproveRejectTask();
+  const { mutate, isPending } = useTeacherApproveRejectTask();
   const { data, isLoading } = useGetTeacherStudentSubmission(id!);
 
   if (isLoading)
@@ -27,8 +27,6 @@ const ViewTask = () => {
         ))}
       </div>
     );
-
-
 
   return (
     <div className="page-shell">
